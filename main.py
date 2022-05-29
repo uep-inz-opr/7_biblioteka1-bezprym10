@@ -37,7 +37,7 @@ class Biblioteka:
       self.tytuly.append(nowa.tytul)
 
 class Ksiazka:
-      def _init_ (self, tytul, autor, liczba =1):
+      def __init__ (self, tytul, autor, liczba =1):
         self.tytul=tytul
         self.autor=autor
         self.liczba = liczba

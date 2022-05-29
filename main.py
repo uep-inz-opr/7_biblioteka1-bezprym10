@@ -7,15 +7,25 @@ class Biblioteka:
       self.tytuly=[]
 
     def dostepne_egz(self, tytul):
+      s=[]
       for i in self.egzemplarze:
         if i.tytul==tytul:
           o=(i.tytul, i.autor, i.rok_wydania)
-          print(o)
+          s.append(o)
+      s.sort()
+      
+      for r in range(len(s)):
+        print(s[r])
 
     def dostepne_ks(self):
+      s=[]
       for i in self.ksiazki:
         t=(i.tytul, i.autor, i.liczba)
-        print(t)
+        s.append(t)
+      s.sort()
+      
+      for r in range(len(s)):
+        print(s[r])
 
 
     def dodaj_egz(self, tl, al, r_wl):

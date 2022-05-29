@@ -4,6 +4,7 @@ class Biblioteka:
       self.wypozyczenia=[]
       self.czytelnicy=[]
       self.ksiazki=[]
+      self.tytuly=[]
 
     def dostepne_egz(self, tytul):
       for i in self.egzemplarze:
@@ -17,21 +18,23 @@ class Biblioteka:
         t=(i.tytul, i.autor, count)
         print(t)
 
-    def dodaj_egz(self, tl, al, r_wl):
-      k=Ksiazka(tl, al)
-      if k not in self.ksiazki:
-          self.dodaj_ks(tl, al)
-      else:
-        pass
 
-      for e in self.ksiazki:
-        if e.tytul==tl:
-          nowy=Egzemplarz(e.tytul, e.autor, r_wl)
-          self.egzemplarze.append(nowy)
+    def dodaj_egz(self, tl, al, r_wl):
+        c=self.tytuly.count(tl)
+        if c==0:
+            self.dodaj_ks(tl, al)
+
+        print(c)
+        for e in self.ksiazki:
+            if e.tytul==tl:
+                nowy=Egzemplarz(e.tytul, e.autor, r_wl)
+                self.egzemplarze.append(nowy)
+
 
     def dodaj_ks(self, tytul, autor):
       nowa=Ksiazka(tytul, autor)
       self.ksiazki.append(nowa)
+      self.tytuly.append(nowa.tytul)
 
 class Ksiazka:
       def __init__ (self, tytul, autor):
@@ -53,8 +56,9 @@ class Egzemplarz:
 nowa_Biblioteka=Biblioteka()
 
 liczba_egzemplarzy=int(input())
-for e in range(liczba_egzemplarzy):
+for e in range(0,liczba_egzemplarzy):
   ex=eval(input())
   nowa_Biblioteka.dodaj_egz(ex[0], ex[1], ex[2])
 
-print(nowa_Biblioteka.dostepne_ks())
+nowa_Biblioteka.dostepne_ks()
+
